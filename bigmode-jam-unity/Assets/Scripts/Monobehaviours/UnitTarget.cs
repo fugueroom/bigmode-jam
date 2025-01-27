@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class UnitTarget : MonoBehaviour
 {
@@ -16,12 +18,11 @@ public class UnitTarget : MonoBehaviour
     {
         inputActions.Disable();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
         var targetInput = inputActions.PlayerMap.PlayerMovement.ReadValue<Vector2>();
-
         transform.position += new Vector3(targetInput.x, 0f, targetInput.y) * targetSpeed;
     }
+    
 }
