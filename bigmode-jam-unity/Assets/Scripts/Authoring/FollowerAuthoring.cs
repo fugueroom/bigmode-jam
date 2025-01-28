@@ -12,18 +12,18 @@ public class FollowerAuthoring : MonoBehaviour
         public override void Bake(FollowerAuthoring authoring)
         {
             Entity entity = GetEntity(TransformUsageFlags.Dynamic);
+
             AddComponent(entity, new Follower
             {
-                moveSpeed = authoring.MoveSpeed,
-                rotationSpeed = authoring.RotationSpeed,
+                randomUnitCircle = UnityEngine.Random.insideUnitCircle * 5f
             });
+
+            SetComponentEnabled<Follower>(entity, false);
         }
     }
 }
 
-public struct Follower : IComponentData
+public struct Follower : IComponentData, IEnableableComponent
 {
-    public float moveSpeed;
-    public float rotationSpeed;
-    public float3 targetPosition;
+    public float2 randomUnitCircle;
 }
