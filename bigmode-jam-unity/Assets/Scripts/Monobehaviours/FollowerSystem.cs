@@ -10,9 +10,9 @@ partial struct FollowerSystem : ISystem
     public void OnUpdate(ref SystemState state)
     {
         // Get the leader
-        var leader = SystemAPI.GetSingletonEntity<Leader>();
-        var leaderTransform = SystemAPI.GetComponentRO<LocalTransform>(leader);
-
+        //var leader = SystemAPI.GetSingletonEntity<Leader>();
+        //var leaderTransform = SystemAPI.GetComponentRO<LocalTransform>(leader);
+        /*
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
         // Query all disabled followers
@@ -30,7 +30,8 @@ partial struct FollowerSystem : ISystem
                 SystemAPI.SetComponentEnabled<Follower>(entityArray[i], true);
             }
         }
-
+        */
+        /*
         FollowerJob followerJob = new FollowerJob
         {
             deltaTime = SystemAPI.Time.DeltaTime,
@@ -38,6 +39,7 @@ partial struct FollowerSystem : ISystem
         };
 
         followerJob.ScheduleParallel();
+        */
     }
 }
 

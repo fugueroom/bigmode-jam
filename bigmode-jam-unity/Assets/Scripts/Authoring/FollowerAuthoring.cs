@@ -15,10 +15,10 @@ public class FollowerAuthoring : MonoBehaviour
 
             AddComponent(entity, new Follower
             {
-                randomUnitCircle = UnityEngine.Random.insideUnitCircle * 5f
+                randomUnitCircle = UnityEngine.Random.insideUnitCircle
             });
 
-            SetComponentEnabled<Follower>(entity, false);
+            //SetComponentEnabled<Follower>(entity, false);
         }
     }
 }
