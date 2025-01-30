@@ -10,6 +10,8 @@ public class UnitTarget : MonoBehaviour
 
     PlayerInputActions inputActions;
 
+    public bool Moving { get; private set; }
+
     private void Awake()
     {
         inputActions = new PlayerInputActions();
@@ -24,8 +26,9 @@ public class UnitTarget : MonoBehaviour
     void Update()
     {
         var targetInput = inputActions.PlayerMap.PlayerMovement.ReadValue<Vector2>();
+        Moving = targetInput.sqrMagnitude > 0f;
 
-        if (targetInput.sqrMagnitude > 0f)
+        if (Moving)
         {
             var moveDirection = new Vector3(targetInput.x, 0f, targetInput.y);
             transform.position += moveDirection * targetSpeed * Time.deltaTime;

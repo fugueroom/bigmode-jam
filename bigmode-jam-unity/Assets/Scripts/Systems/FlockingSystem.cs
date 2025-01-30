@@ -10,6 +10,7 @@ partial struct FlockingSystem : ISystem
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
+        /*
         var leader = SystemAPI.GetSingletonEntity<Leader>();
         var leaderTransform = SystemAPI.GetComponentRO<LocalTransform>(leader);
 
@@ -67,5 +68,6 @@ partial struct FlockingSystem : ISystem
         
         // Align with average heading of the group
         // Avoid crowding other group members
+        */
     }
 }
