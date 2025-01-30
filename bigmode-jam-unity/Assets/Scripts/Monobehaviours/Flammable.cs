@@ -19,7 +19,7 @@ public class Flammable : MonoBehaviour
         if (collision.collider.CompareTag("Projectile"))
         {
             damageCounter += 1f;
-            currentColor.r += 1f;
+            currentColor.r += 5f / HP;
             _renderer.material.color = currentColor;
 
             if (damageCounter > HP)
