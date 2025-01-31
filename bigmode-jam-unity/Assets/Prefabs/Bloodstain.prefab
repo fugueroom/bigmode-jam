@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2714192186850371259}
   - component: {fileID: 3652488973599729486}
   m_Layer: 0
-  m_Name: TargetMarker
+  m_Name: Bloodstain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 66cae81d39b8d924fb0cc8f8882f1a1f, type: 2}
+  - {fileID: 2100000, guid: 5ca254bbf198305409d70daf628e9196, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

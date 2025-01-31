@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,10 +11,15 @@ public class Mobber : MonoBehaviour
     private Vector2 randomOffset;
 
     public GameObject Projectile;
+    public GameObject Mesh;
+    public GameObject Bloodstain;
+
     [HideInInspector] public int NumMobbers;
     [HideInInspector] public int MobberIndex;
 
     private float offsetTimer = 0f;
+    private GameObject torch;
+    private bool canThrow;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -26,12 +32,15 @@ public class Mobber : MonoBehaviour
     void Start()
     {
         randomOffset = Random.insideUnitCircle * Mathf.Sqrt(NumMobbers);
+        torch = Instantiate(Projectile, transform.position, Quaternion.identity);
+        torch.SetActive(false);
+        canThrow = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canThrow)
         {
             FireProjectile();
         }
@@ -102,17 +111,48 @@ public class Mobber : MonoBehaviour
             // max throwing distance
             if (dist < 25f)
             {
-                var projectile = Instantiate(Projectile, transform.position, Quaternion.identity);
-                var rb = projectile.GetComponent<Rigidbody>();
+                //var projectile = Instantiate(Projectile, transform.position, Quaternion.identity);
+                torch.transform.position = transform.position;
+                torch.SetActive(true);
 
-                var launchAngle = (Vector3.Normalize(hitInfo.point - projectile.transform.position) + Vector3.up) * 0.5f;
+                var rb = torch.GetComponent<Rigidbody>();
+
+                var launchAngle = (Vector3.Normalize(hitInfo.point - torch.transform.position) + Vector3.up) * 0.5f;
                 var fireDir = Vector3.Normalize(launchAngle);
 
                 // sqrt (g * dist / sin (2 * angle))
                 var v0 = Mathf.Sqrt((9.81f * dist) / Mathf.Sin(Mathf.Deg2Rad * 90f));
                 rb.AddForce(fireDir * v0, ForceMode.Impulse);
-                rb.AddTorque(projectile.transform.TransformDirection(projectile.transform.forward) * Random.Range(3f, 27f));
+                rb.AddTorque(torch.transform.TransformDirection(torch.transform.forward) * Random.Range(3f, 27f));
+
+                StartCoroutine(TorchReload());
             }
+        }
+    }
+
+    IEnumerator TorchReload()
+    {
+        canThrow = false;
+        yield return new WaitForSeconds(3f);
+
+        var rb = torch.GetComponent<Rigidbody>();
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        torch.transform.rotation = Quaternion.identity;
+        torch.SetActive(false);
+        canThrow = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Cannonball"))
+        {
+            Mesh.SetActive(false);
+            Bloodstain.SetActive(true);
+
+            agent.enabled = false;
+            enabled = false;
         }
     }
 }

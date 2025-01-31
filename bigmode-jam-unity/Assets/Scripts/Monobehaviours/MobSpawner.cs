@@ -23,15 +23,20 @@ public class MobSpawner : MonoBehaviour
             mobber.MobberIndex = i;
         }
     }
-    /*
+    
     private void Update()
     {
+        int currentMobCount = 0;
         for (int i = 0; i < mobbers.Length; i++)
         {
-            transform.position += mobbers[i].transform.position;
+            if (mobbers[i].enabled)
+            {
+                transform.position += mobbers[i].transform.position;
+                currentMobCount++;
+            }
         }
 
-        transform.position /= mobbers.Length;
+        transform.position /= currentMobCount;
     }
-    */
+    
 }
