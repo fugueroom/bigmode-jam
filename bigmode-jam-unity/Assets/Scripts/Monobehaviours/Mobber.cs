@@ -11,6 +11,7 @@ public class Mobber : MonoBehaviour
 
     public GameObject Projectile;
     [HideInInspector] public int NumMobbers;
+    [HideInInspector] public int MobberIndex;
 
     private float offsetTimer = 0f;
 
@@ -38,6 +39,33 @@ public class Mobber : MonoBehaviour
         if (!target.Moving)
             return;
 
+        var currentDistance = 0f;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // charge, in a line?
+            agent.speed *= 2f;
+            currentDistance = (transform.position - target.transform.position).magnitude;
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            // set offset while space is held
+            currentDestination = target.transform.position - target.transform.forward * currentDistance * 2f;
+        }
+        else
+        {
+            currentDestination = new Vector3(target.transform.position.x + randomOffset.x,
+            0f,
+            target.transform.position.z + randomOffset.y);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            // stop charge
+            randomOffset = Random.insideUnitCircle * Mathf.Sqrt(NumMobbers);
+            agent.speed *= 0.5f;
+        }
+        /*
         offsetTimer += Time.deltaTime;
 
         if (offsetTimer > 10f)
@@ -46,10 +74,7 @@ public class Mobber : MonoBehaviour
             randomOffset = Random.insideUnitCircle * Mathf.Sqrt(NumMobbers);
             offsetTimer = 0f;
         }
-
-        currentDestination = new Vector3(target.transform.position.x + randomOffset.x, 
-            0f, 
-            target.transform.position.z + randomOffset.y);
+        */
 
         if (NavMesh.CalculatePath(transform.position, currentDestination, NavMesh.AllAreas, path))
         {

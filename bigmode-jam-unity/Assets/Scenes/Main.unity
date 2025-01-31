@@ -1559,7 +1559,7 @@ GameObject:
   - component: {fileID: 754846263}
   - component: {fileID: 754846262}
   m_Layer: 0
-  m_Name: CameraTarget
+  m_Name: UnitTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1592,7 +1592,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d620d2502a8504196ce134ced219f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSpeed: 3.5
+  chargeSpeed: 7
+  normalSpeed: 3.5
   targetRotationSpeed: 3
 --- !u!23 &754846262
 MeshRenderer:
