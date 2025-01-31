@@ -16,6 +16,7 @@ public class Tank : MonoBehaviour
     private void Start()
     {
         spawnedCannonball = Instantiate(Cannonball, transform.position, Quaternion.identity);
+        spawnedCannonball.SetActive(false);
     }
 
     // Update is called once per frame
@@ -63,5 +64,10 @@ public class Tank : MonoBehaviour
         var rb = spawnedCannonball.GetComponent<Rigidbody>();
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(spawnedCannonball);
     }
 }
