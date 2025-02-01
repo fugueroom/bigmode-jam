@@ -5,6 +5,8 @@ using UnityEngine.AI;
 public class Mobber : MonoBehaviour
 {
     private UnitTarget target;
+    private MobSpawner spawner;
+
     NavMeshAgent agent;
     NavMeshPath path;
     Vector3 currentDestination;
@@ -14,9 +16,6 @@ public class Mobber : MonoBehaviour
     public GameObject Mesh;
     public GameObject Bloodstain;
 
-    [HideInInspector] public int NumMobbers;
-    [HideInInspector] public int MobberIndex;
-
     private float offsetTimer = 0f;
     private GameObject torch;
     private bool canThrow;
@@ -25,13 +24,15 @@ public class Mobber : MonoBehaviour
     void Awake()
     {
         target = FindFirstObjectByType<UnitTarget>();
+        spawner = FindFirstObjectByType<MobSpawner>();
+
         agent = GetComponent<NavMeshAgent>();
         path = new NavMeshPath();
     }
 
     void Start()
     {
-        randomOffset = Random.insideUnitCircle * Mathf.Sqrt(NumMobbers);
+        randomOffset = Random.insideUnitCircle * Mathf.Sqrt(spawner.CurrentMobCount);
         torch = Instantiate(Projectile, transform.position, Quaternion.identity);
         torch.SetActive(false);
         canThrow = true;
@@ -64,14 +65,14 @@ public class Mobber : MonoBehaviour
         else
         {
             currentDestination = new Vector3(target.transform.position.x + randomOffset.x,
-            0f,
+            transform.position.y,
             target.transform.position.z + randomOffset.y);
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
             // stop charge
-            randomOffset = Random.insideUnitCircle * Mathf.Sqrt(NumMobbers);
+            randomOffset = Random.insideUnitCircle * Mathf.Sqrt(spawner.CurrentMobCount);
             agent.speed *= 0.5f;
         }
         /*
@@ -92,12 +93,12 @@ public class Mobber : MonoBehaviour
         }
         else
         {   
-            /*
+            
             if (NavMesh.SamplePosition(target.transform.position, out NavMeshHit hit, 4f, NavMesh.AllAreas))
             {
                 agent.SetDestination(hit.position);
             }
-            */
+            
         }
     }
 
