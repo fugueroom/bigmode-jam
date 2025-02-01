@@ -45,6 +45,9 @@ public class Mobber : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target == null)
+            return;
+
         if (Input.GetMouseButtonDown(0) && canThrow)
         {
             FireProjectile();

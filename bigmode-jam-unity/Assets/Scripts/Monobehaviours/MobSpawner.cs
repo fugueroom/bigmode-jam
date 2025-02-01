@@ -1,5 +1,8 @@
 using UnityEngine;
+using TMPro;
 using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MobSpawner : MonoBehaviour
 {
@@ -7,6 +10,10 @@ public class MobSpawner : MonoBehaviour
     public int NumMobbers;
     public int CurrentMobCount { get; private set; }
 
+    public bool MainMenu = false;
+    [HideInInspector] public bool GameOver { get; private set; }
+
+    public TextMeshProUGUI GameOverText;
     private List<Mobber> mobbers;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,6 +38,9 @@ public class MobSpawner : MonoBehaviour
     
     private void Update()
     {
+        if (GameOver || MainMenu)
+            return;
+
         CurrentMobCount = 0;
 
         for (int i = 0; i < mobbers.Count; i++)
@@ -42,7 +52,24 @@ public class MobSpawner : MonoBehaviour
             }
         }
 
-        transform.position /= CurrentMobCount;
+        if (CurrentMobCount > 0)
+        {
+            transform.position /= CurrentMobCount;
+        }
+        else
+        {
+            StartCoroutine(GameOverSequence());
+        }
+    }
+
+    private IEnumerator GameOverSequence()
+    {
+        GameOver = true;
+        Time.timeScale = 0.5f;
+        yield return new WaitForSeconds(1.5f);
+        GameOverText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("MainMenu");
     }
     
 }
