@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MobSpawner : MonoBehaviour
 {
+    public GameObject TorchPrefab;
     public Mobber MobPrefab;
     public int NumMobbers;
     public int CurrentMobCount { get; private set; }
@@ -24,15 +25,22 @@ public class MobSpawner : MonoBehaviour
         for (int i = 0; i < NumMobbers; i++)
         {
             var randomPos = Random.insideUnitCircle * Mathf.Sqrt(NumMobbers);
-            var mobber = Instantiate(MobPrefab, new Vector3(randomPos.x, transform.position.y, randomPos.y), Quaternion.identity);
-
-            mobbers.Add(mobber);
+            SpawnAdditionalMobbers(new Vector3(randomPos.x, transform.position.y, randomPos.y));
         }
     }
 
     public void SpawnAdditionalMobbers(Vector3 spawnPosition)
     {
         var mobber = Instantiate(MobPrefab, new Vector3(spawnPosition.x, transform.position.y, spawnPosition.z), Quaternion.identity);
+
+        if (Random.value > 0.666f)
+        {
+            Vector3 torchOffset = new Vector3(0.4f, 1.8f, 0.2f);
+            var torch = Instantiate(TorchPrefab, mobber.transform.position + torchOffset, Quaternion.identity, mobber.transform);
+            torch.GetComponent<Rigidbody>().isKinematic = true;
+            torch.transform.GetChild(0).gameObject.AddComponent<Billboard>();
+        }
+
         mobbers.Add(mobber);
     }
     

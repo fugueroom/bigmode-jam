@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: press any key to begin
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6bd022c68272b234abf24da4b5b3f8a7, type: 2}
   m_sharedMaterial: {fileID: 8678345280068949521, guid: 6bd022c68272b234abf24da4b5b3f8a7, type: 2}
@@ -421,8 +421,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.052414443, y: -0.000000029761367, z: 0.0000000015620725, w: 0.99862546}
-  m_LocalPosition: {x: 0, y: 4, z: -38}
+  m_LocalRotation: {x: -0.000000001107391, y: 0.99862546, z: -0.05241439, w: -0.00000002109857}
+  m_LocalPosition: {x: 0, y: 4, z: 38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -980,7 +980,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 4, z: -38}
+  FollowOffset: {x: 0, y: 4, z: 38}
 --- !u!114 &702779559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1032,8 +1032,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702779556}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.052414436, y: -0.000000029761361, z: 0.0000000015620721, w: 0.99862546}
-  m_LocalPosition: {x: 0, y: 4, z: -38}
+  m_LocalRotation: {x: -0.0000000011073903, y: 0.99862546, z: -0.052414402, w: -0.000000021098572}
+  m_LocalPosition: {x: 0, y: 4, z: 38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1113,7 +1113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943979736}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1132,6 +1132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc0a3f802cb7014a84e8c4e15e2e503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TorchPrefab: {fileID: 4153472846696745863, guid: 5ed3aa1c8b6b944499b4af3e445f6e91, type: 3}
   MobPrefab: {fileID: 8200909645819284587, guid: 9ccfb165b40964c49a8449b77ae63c82, type: 3}
   NumMobbers: 1000
   MainMenu: 1

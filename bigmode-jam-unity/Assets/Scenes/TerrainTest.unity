@@ -1010,6 +1010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc0a3f802cb7014a84e8c4e15e2e503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TorchPrefab: {fileID: 4153472846696745863, guid: 5ed3aa1c8b6b944499b4af3e445f6e91, type: 3}
   MobPrefab: {fileID: 8200909645819284587, guid: 9ccfb165b40964c49a8449b77ae63c82, type: 3}
   NumMobbers: 10
   MainMenu: 0
