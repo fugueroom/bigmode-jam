@@ -7,7 +7,7 @@ public class MainMenuController : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            SceneManager.LoadScene("TerrainTest");
+            //SceneManager.LoadScene("TerrainTest");
         }
     }
 }

@@ -5,16 +5,17 @@ public class Tank : MonoBehaviour
 {
     public GameObject Cannonball;
     public GameObject TargetMarker;
-    public MobSpawner MobSpawner;
 
     public float range = 35f;
     private float shotTimer = 0f;
     private float shotThreshold = 6f;
 
+    private MobSpawner mobSpawner;
     private GameObject spawnedCannonball;
 
     private void Start()
     {
+        mobSpawner = FindFirstObjectByType<MobSpawner>();
         spawnedCannonball = Instantiate(Cannonball, transform.position, Quaternion.identity);
         spawnedCannonball.SetActive(false);
     }
@@ -23,7 +24,7 @@ public class Tank : MonoBehaviour
     void Update()
     {
         shotTimer += Time.deltaTime;
-        var dist = (transform.position - MobSpawner.transform.position).magnitude;
+        var dist = (transform.position - mobSpawner.transform.position).magnitude;
 
         if (dist < range && shotTimer > shotThreshold )
         {
@@ -33,7 +34,7 @@ public class Tank : MonoBehaviour
             spawnedCannonball.SetActive(true);
             var rb = spawnedCannonball.GetComponent<Rigidbody>();
 
-            var launchAngle = (Vector3.Normalize(MobSpawner.transform.position - spawnedCannonball.transform.position) + Vector3.up) * 0.5f;
+            var launchAngle = (Vector3.Normalize(mobSpawner.transform.position - spawnedCannonball.transform.position) + Vector3.up) * 0.5f;
             var fireDir = Vector3.Normalize(launchAngle);
 
             // sqrt (g * dist / sin (2 * angle))

@@ -38,6 +38,7 @@ public class MobSpawner : MonoBehaviour
             Vector3 torchOffset = new Vector3(0.4f, 1.8f, 0.2f);
             var torch = Instantiate(TorchPrefab, mobber.transform.position + torchOffset, Quaternion.identity, mobber.transform);
             torch.GetComponent<Rigidbody>().isKinematic = true;
+            torch.GetComponent<Collider>().enabled = false;
             torch.transform.GetChild(0).gameObject.AddComponent<Billboard>();
         }
 

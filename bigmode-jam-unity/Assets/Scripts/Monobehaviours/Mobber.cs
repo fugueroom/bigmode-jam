@@ -111,7 +111,8 @@ public class Mobber : MonoBehaviour
 
     void FireProjectile()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        var viewportPos = new Vector2(Input.mousePosition.x / Screen.width, Input.mousePosition.y / Screen.height);
+        Ray ray = Camera.main.ViewportPointToRay(viewportPos);
         if (Physics.Raycast(ray, out var hitInfo))
         {
             var dist = (hitInfo.point - transform.position).magnitude;
@@ -161,6 +162,13 @@ public class Mobber : MonoBehaviour
 
             agent.enabled = false;
             enabled = false;
+
+            // this is bad
+            var torchChild = transform.GetComponentInChildren<Billboard>();
+            if (torchChild != null)
+            {
+                Destroy(torchChild);
+            }
         }
     }
 }
