@@ -73,8 +73,9 @@ MonoBehaviour:
   Projectile: {fileID: 4153472846696745863, guid: 5ed3aa1c8b6b944499b4af3e445f6e91, type: 3}
   Mesh: {fileID: 5691962337222640893}
   Bloodstain: {fileID: 7507846738808896755}
-  NumMobbers: 0
-  MobberIndex: 0
+  NormalSpeed: 3.5
+  ChargeSpeed: 7
+  TorchReloadTime: 2
 --- !u!136 &346185040019617778
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -16,6 +16,10 @@ public class Mobber : MonoBehaviour
     public GameObject Mesh;
     public GameObject Bloodstain;
 
+    public float NormalSpeed;
+    public float ChargeSpeed;
+    public float TorchReloadTime;
+
     private float offsetTimer = 0f;
     private GameObject torch;
     private bool canThrow;
@@ -53,13 +57,13 @@ public class Mobber : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // charge, in a line?
-            agent.speed *= 2f;
             currentDistance = (transform.position - target.transform.position).magnitude;
         }
 
         if (Input.GetKey(KeyCode.Space))
         {
             // set offset while space is held
+            agent.speed = ChargeSpeed;
             currentDestination = target.transform.position - target.transform.forward * currentDistance * 2f;
         }
         else
@@ -73,7 +77,7 @@ public class Mobber : MonoBehaviour
         {
             // stop charge
             randomOffset = Random.insideUnitCircle * Mathf.Sqrt(spawner.CurrentMobCount);
-            agent.speed *= 0.5f;
+            agent.speed = NormalSpeed;
         }
         /*
         offsetTimer += Time.deltaTime;
@@ -134,7 +138,7 @@ public class Mobber : MonoBehaviour
     IEnumerator TorchReload()
     {
         canThrow = false;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(TorchReloadTime);
 
         var rb = torch.GetComponent<Rigidbody>();
         rb.linearVelocity = Vector3.zero;
