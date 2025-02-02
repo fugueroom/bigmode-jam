@@ -25,7 +25,7 @@ public class MobSpawner : MonoBehaviour
         for (int i = 0; i < NumMobbers; i++)
         {
             var randomPos = Random.insideUnitCircle * Mathf.Sqrt(NumMobbers);
-            SpawnAdditionalMobbers(new Vector3(randomPos.x, transform.position.y, randomPos.y));
+            SpawnAdditionalMobbers(new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y));
         }
     }
 
