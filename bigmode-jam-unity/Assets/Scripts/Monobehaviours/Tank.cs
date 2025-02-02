@@ -4,7 +4,6 @@ using UnityEngine;
 public class Tank : MonoBehaviour
 {
     public GameObject Cannonball;
-    public GameObject TargetMarker;
 
     public float range = 35f;
     private float shotTimer = 0f;

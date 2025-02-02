@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7806209039469457103}
   - component: {fileID: 9069401604409749877}
   - component: {fileID: 6480055415682885301}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Torch
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -202,6 +202,10 @@ PrefabInstance:
     - target: {fileID: 8326147152444662780, guid: 76c5d1aa0063e42479122deba89a06e6, type: 3}
       propertyPath: m_Name
       value: TorchFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326147152444662780, guid: 76c5d1aa0063e42479122deba89a06e6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

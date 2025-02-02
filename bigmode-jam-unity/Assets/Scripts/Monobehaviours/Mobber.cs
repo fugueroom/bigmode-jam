@@ -164,10 +164,10 @@ public class Mobber : MonoBehaviour
             enabled = false;
 
             // this is bad
-            var torchChild = transform.GetComponentInChildren<Billboard>();
+            var torchChild = transform.GetComponentInChildren<Rigidbody>();
             if (torchChild != null)
             {
-                Destroy(torchChild);
+                Destroy(torchChild.gameObject);
             }
         }
     }

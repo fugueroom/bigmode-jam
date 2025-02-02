@@ -51,6 +51,7 @@ public class MobSpawner : MonoBehaviour
             return;
 
         CurrentMobCount = 0;
+        transform.position = Vector3.zero;
 
         for (int i = 0; i < mobbers.Count; i++)
         {
