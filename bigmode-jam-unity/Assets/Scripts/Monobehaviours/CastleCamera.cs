@@ -27,7 +27,7 @@ public class CastleCamera : MonoBehaviour
 
         while (camY < 42f)
         {
-            camY += Time.deltaTime * 1.5f;
+            camY += Time.deltaTime * 2f;
             _camera.FollowOffset = new Vector3(_camera.FollowOffset.x, camY, _camera.FollowOffset.z);
             yield return null;
         }

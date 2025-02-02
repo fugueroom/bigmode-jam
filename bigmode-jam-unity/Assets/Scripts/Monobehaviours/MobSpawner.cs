@@ -14,7 +14,7 @@ public class MobSpawner : MonoBehaviour
     public bool MainMenu = false;
     [HideInInspector] public bool GameOver { get; private set; }
 
-    public TextMeshProUGUI GameOverText;
+    public GameObject GameOverUI;
     private List<Mobber> mobbers;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -77,7 +77,7 @@ public class MobSpawner : MonoBehaviour
         GameOver = true;
         Time.timeScale = 0.5f;
         yield return new WaitForSeconds(1.5f);
-        GameOverText.gameObject.SetActive(true);
+        GameOverUI.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("MainMenu");
     }
