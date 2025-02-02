@@ -92,6 +92,7 @@ public class MobSpawner : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         GameOverUI.SetActive(true);
         yield return new WaitForSeconds(1.5f);
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
     
