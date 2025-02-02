@@ -7,7 +7,7 @@ public class Tank : MonoBehaviour
 
     public float range = 35f;
     private float shotTimer = 0f;
-    private float shotThreshold = 6f;
+    private float shotThreshold = 5f;
 
     private MobSpawner mobSpawner;
     private GameObject spawnedCannonball;
@@ -58,7 +58,7 @@ public class Tank : MonoBehaviour
 
     IEnumerator CannonballTimer()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4.5f);
         spawnedCannonball.SetActive(false);
 
         var rb = spawnedCannonball.GetComponent<Rigidbody>();
