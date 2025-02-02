@@ -15,25 +15,32 @@ public class MobSpawner : MonoBehaviour
     [HideInInspector] public bool GameOver { get; private set; }
 
     public GameObject GameOverUI;
+    public GameObject ControlsUI;
     private List<Mobber> mobbers;
+
+    bool controlScreen = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mobbers = new List<Mobber>();
+        bool forceTorch;
 
         for (int i = 0; i < NumMobbers; i++)
         {
             var randomPos = Random.insideUnitCircle * Mathf.Sqrt(NumMobbers);
-            SpawnAdditionalMobbers(new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y));
+
+            // force torch for first mobber
+            forceTorch = i == 0;
+            SpawnAdditionalMobbers(new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y), forceTorch);
         }
     }
 
-    public void SpawnAdditionalMobbers(Vector3 spawnPosition)
+    public void SpawnAdditionalMobbers(Vector3 spawnPosition, bool forceTorch = false)
     {
         var mobber = Instantiate(MobPrefab, new Vector3(spawnPosition.x, transform.position.y, spawnPosition.z), Quaternion.identity);
 
-        if (Random.value > 0.666f)
+        if (Random.value > 0.666f || forceTorch)
         {
             Vector3 torchOffset = new Vector3(0.4f, 1.8f, 0.2f);
             var torch = Instantiate(TorchPrefab, mobber.transform.position + torchOffset, Quaternion.identity, mobber.transform);
@@ -47,6 +54,12 @@ public class MobSpawner : MonoBehaviour
     
     private void Update()
     {
+        if (controlScreen && Input.anyKeyDown)
+        {
+            ControlsUI.SetActive(false);
+            controlScreen = false;
+        }
+
         if (GameOver || MainMenu)
             return;
 
