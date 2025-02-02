@@ -54,14 +54,14 @@ public class MobSpawner : MonoBehaviour
     
     private void Update()
     {
+        if (GameOver || MainMenu)
+            return;
+
         if (controlScreen && Input.anyKeyDown)
         {
             ControlsUI.SetActive(false);
             controlScreen = false;
         }
-
-        if (GameOver || MainMenu)
-            return;
 
         CurrentMobCount = 0;
         transform.position = Vector3.zero;
