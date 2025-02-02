@@ -14,7 +14,6 @@ public class CastleCamera : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Castle camera!");
         if (other.GetComponent<Mobber>() && !panning)
         {
             StartCoroutine(PanCamera());
@@ -26,9 +25,9 @@ public class CastleCamera : MonoBehaviour
         panning = true;
         float camY = _camera.FollowOffset.y;
 
-        while (camY < 37f)
+        while (camY < 42f)
         {
-            camY += Time.deltaTime;
+            camY += Time.deltaTime * 1.5f;
             _camera.FollowOffset = new Vector3(_camera.FollowOffset.x, camY, _camera.FollowOffset.z);
             yield return null;
         }

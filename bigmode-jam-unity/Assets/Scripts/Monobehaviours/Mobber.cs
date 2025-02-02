@@ -67,7 +67,8 @@ public class Mobber : MonoBehaviour
         {
             // set offset while space is held
             agent.speed = ChargeSpeed;
-            currentDestination = target.transform.position - target.transform.forward * currentDistance * 2f;
+            var targetPos = target.transform.position - target.transform.forward * currentDistance * 2f;
+            currentDestination = new Vector3(targetPos.x, transform.position.y, targetPos.z);
         }
         else
         {
