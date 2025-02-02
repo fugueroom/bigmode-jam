@@ -74,7 +74,7 @@ MonoBehaviour:
   Mesh: {fileID: 5691962337222640893}
   Bloodstain: {fileID: 7507846738808896755}
   NormalSpeed: 3.5
-  ChargeSpeed: 7
+  ChargeSpeed: 6
   TorchReloadTime: 2
 --- !u!136 &346185040019617778
 CapsuleCollider:
