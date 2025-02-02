@@ -7,6 +7,7 @@ public class CastleEndSequence : MonoBehaviour
     public GameObject YouWinUI;
     public GameObject CreditsUI;
     public GameObject Crown;
+    public CastleCamera CastleCam;
 
     public MovingKeep[] Keeps;
     bool end;
@@ -31,6 +32,9 @@ public class CastleEndSequence : MonoBehaviour
 
             return;
         }
+
+        if (!CastleCam.BeginningOfTheEnd)
+            return;
 
         foreach (var keep in Keeps)
         {

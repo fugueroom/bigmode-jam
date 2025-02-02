@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790dd57045c454e459f37e373263adc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 50
+  HP: 40
   FireVFX: {fileID: 2693923495915486236}
   RendereredComponents:
   - {fileID: 6243231277512115439}

@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class CastleCamera : MonoBehaviour
 {
+    public MovingKeep[] Keeps;
+
     private CinemachineFollow _camera;
     private bool panning;
+
+    public bool BeginningOfTheEnd { get; private set; }
 
     private void Start()
     {
@@ -31,5 +35,12 @@ public class CastleCamera : MonoBehaviour
             _camera.FollowOffset = new Vector3(_camera.FollowOffset.x, camY, _camera.FollowOffset.z);
             yield return null;
         }
+
+        foreach (var keep in Keeps)
+        {
+            keep.enabled = true;
+        }
+
+        BeginningOfTheEnd = true;
     }    
 }
