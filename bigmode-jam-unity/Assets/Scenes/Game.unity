@@ -25317,6 +25317,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2154868750097439974, guid: e0dd7c9736193f64e87ea8df66f6a096, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4234539778272643302, guid: e0dd7c9736193f64e87ea8df66f6a096, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -25327,7 +25331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7714278519113408819, guid: e0dd7c9736193f64e87ea8df66f6a096, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8877015841656253887, guid: e0dd7c9736193f64e87ea8df66f6a096, type: 3}
       propertyPath: YouWinUI

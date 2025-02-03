@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPosition: {fileID: 2267690638107979917}
-  NumAdditionalMobbers: 3
+  NumAdditionalMobbers: 4
 --- !u!54 &6649208975476551627
 Rigidbody:
   m_ObjectHideFlags: 0
