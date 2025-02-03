@@ -10440,7 +10440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TorchPrefab: {fileID: 4153472846696745863, guid: 5ed3aa1c8b6b944499b4af3e445f6e91, type: 3}
   MobPrefab: {fileID: 8200909645819284587, guid: 9ccfb165b40964c49a8449b77ae63c82, type: 3}
-  NumMobbers: 1
+  NumMobbers: 12
   MainMenu: 0
   GameOverUI: {fileID: 978880806}
   ControlsUI: {fileID: 786667416}

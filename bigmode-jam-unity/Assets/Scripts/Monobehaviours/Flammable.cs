@@ -7,6 +7,7 @@ public class Flammable : MonoBehaviour
     public float HP;
     public ParticleSystem FireVFX;
     public Renderer[] RendereredComponents;
+    private MobSpawner mobSpawner;
 
     public float InitialFireScale;
     public float FinalFireScale;
@@ -16,6 +17,7 @@ public class Flammable : MonoBehaviour
 
     private void Start()
     {
+        mobSpawner = FindFirstObjectByType<MobSpawner>();
         FireVFX.gameObject.SetActive(false);
         fireScaleRange = FinalFireScale - InitialFireScale;
     }
@@ -32,7 +34,15 @@ public class Flammable : MonoBehaviour
                 FireVFX.Play();
             }
 
-            damageCounter += 1f;
+            float damage = 1.0f;
+
+            // Give an advantage to those last few brave mobbers
+            if (mobSpawner != null && mobSpawner.NumMobbers < 4)
+            {
+                damage = 3.0f;
+            }
+
+            damageCounter += damage;
 
             // scale the fire based off of the percentage of damage to HP
             // scale = targetScale - initialScale (range 1)
