@@ -10,7 +10,7 @@ public class MovingKeep : Tank
     private void OnEnable()
     {
         moveSequence = DOTween.Sequence();
-        moveSequence.Append(transform.DOMove(new Vector3(EndingPosition.position.x, transform.position.y, EndingPosition.position.z), 5f)).SetLoops(-1, LoopType.Yoyo);
+        moveSequence.Append(transform.DOMove(new Vector3(EndingPosition.position.x, transform.position.y, EndingPosition.position.z), 6f)).SetLoops(-1, LoopType.Yoyo);
     }
 
     private void OnDisable()
