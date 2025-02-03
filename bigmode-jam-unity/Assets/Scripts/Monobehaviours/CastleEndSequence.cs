@@ -1,9 +1,11 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class CastleEndSequence : MonoBehaviour
 {
+    public Image FadeToBlack;
     public GameObject YouWinUI;
     public GameObject CreditsUI;
     public GameObject Crown;
@@ -22,7 +24,7 @@ public class CastleEndSequence : MonoBehaviour
             {
                 if (credits)
                 {
-                    SceneManager.LoadScene("MainMenu");
+                    FadeToBlack.DOFade(1f, 1f).OnComplete(() => SceneManager.LoadScene("MainMenu"));
                 }
 
                 credits = true;

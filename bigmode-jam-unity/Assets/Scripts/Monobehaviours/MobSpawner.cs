@@ -1,8 +1,9 @@
 using UnityEngine;
-using TMPro;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class MobSpawner : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class MobSpawner : MonoBehaviour
     public bool MainMenu = false;
     [HideInInspector] public bool GameOver { get; private set; }
 
+    public Image FadeToBlack;
     public GameObject GameOverUI;
     public GameObject ControlsUI;
     private List<Mobber> mobbers;
@@ -34,6 +36,9 @@ public class MobSpawner : MonoBehaviour
             forceTorch = i == 0;
             SpawnAdditionalMobbers(new Vector3(transform.position.x + randomPos.x, transform.position.y, transform.position.z + randomPos.y), forceTorch);
         }
+
+        // Fade in from black
+        FadeToBlack.DOFade(0f, 1f);
     }
 
     public void SpawnAdditionalMobbers(Vector3 spawnPosition, bool forceTorch = false)
@@ -93,7 +98,7 @@ public class MobSpawner : MonoBehaviour
         GameOverUI.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        FadeToBlack.DOFade(1f, 1f).OnComplete(() => SceneManager.LoadScene("MainMenu"));
     }
     
 }
