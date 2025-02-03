@@ -37,7 +37,7 @@ public class Flammable : MonoBehaviour
             float damage = 1.0f;
 
             // Give an advantage to those last few brave mobbers
-            if (mobSpawner != null && mobSpawner.NumMobbers < 4)
+            if (mobSpawner != null && mobSpawner.CurrentMobCount < 4)
             {
                 damage = 3.0f;
             }
